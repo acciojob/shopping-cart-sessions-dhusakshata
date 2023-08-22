@@ -83,11 +83,12 @@ function addToCart(productId) {
   const product = products.find((p) => p.id === productId);
 
   if (!cartData.find((item) => item.id === productId)) {
-    cartData.push({ ...product });
+    cartData.push(product); // Push the complete product details
     sessionStorage.setItem("cart", JSON.stringify(cartData));
     renderCart();
   }
 }
+
 
 // Remove item from cart
 function removeFromCart(productId) {
