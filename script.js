@@ -76,11 +76,14 @@ function renderCart() {
   });
 }
 
+
 // Add item to cart
 function addToCart(productId) {
   const cartData = JSON.parse(sessionStorage.getItem("cart")) || [];
+  const product = products.find((p) => p.id === productId);
+
   if (!cartData.find((item) => item.id === productId)) {
-    cartData.push({ id: productId });
+    cartData.push({ ...product });
     sessionStorage.setItem("cart", JSON.stringify(cartData));
     renderCart();
   }
